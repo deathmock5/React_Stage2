@@ -13,7 +13,7 @@ Tools
     Boolean Run/Stop
     LONG Time Limit
 
-  2 Outputs
+  3 Outputs
     Boolean On/Off
     Boolean Safe/Unsafe
     LONG Time Limit
