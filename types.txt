@@ -1,13 +1,11 @@
 TYPES
 
-User
-
-
 Door
   3 Inputs
     Locked, Unlocked, Temporary Unlock
-  1 Output
+  2 Outputs
     Boolean Closed/Open
+    Boolean Locked/Unlocked
 
 Tools
   3 Inputs
