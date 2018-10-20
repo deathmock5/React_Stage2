@@ -37,68 +37,14 @@
 			doEcho();
             break;
         case "PUSH": //Push data to the server.
-            if(isset($_GET['key']))
-            {
-                $apikey = $_GET['key'];
-            }
-            else
-            {
-                echo "You need an api key.\r\n";
-                break;
-            }
-            $loc = Location::getLocationIndexByApikey($apikey);
-
-            if($loc)
-            {
-                $machine = $_GET['macn'];
-                $date = $_GET['date'];
-                $value = $_GET['val'];
-                $chks = $_GET['chk'];
-                //Check the checksum
-                $validate = "/api.php?action=PUSH&val=" . $value . "&date=" . $date . "&key=" . $apikey . "&macn=" . $machine . "da39a3ee5e6b4b0d3255bfef95601890afd80709";//Magic number.
-                if(sha1($validate) === $chks)
-                {
-                    $data = Data::create($loc->lindex,$machine,$date, $value);
-                    echo "ok\r\n";
-                }
-                else
-                {
-                    echo "bad\r\n";
-                }
-            }
-            else
-            {
-                echo "No location\r\n";
-            }
+            doPush();
             break;
         case "PING":
-            $sql = "SELECT COUNT(*) as total FROM Data WHERE lindex=" . $_GET['loc'] . ";";
-            if(!$mysqli->query($sql))
-            {
-                echo $mysqli->error;
-            }
-            else
-            {
-                if(!$mysqli->query($sql))
-                {
-                    echo $mysqli->error;
-                }
-                $mysqli->close();
-            }
-            $mysqli->close();
-            break;
-        case "PONG":
-            header('Content-type: text/javascript');
-            echo json_encode(Audit::getAllAuditsOfLocation($_GET['val']));
+            doPing();
             break;
         default:
+			echo "Unknown action $action. "
+			exit();
             break;
     }
-    $mysqli->close();
-
-    // Open the file to get existing content
-
-    // Append a new person to the file
-    // Write the contents back to the file
-
 ?>
