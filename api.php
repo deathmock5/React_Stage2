@@ -1,8 +1,7 @@
 <?php
-    include "mysql_connect.php";
+    
     $value = "";
     $action = "";
-	$apik = "";
 	
     if(isset($_GET['action'])){
         $action = $_GET['action'];
@@ -22,6 +21,8 @@
 		exit();
    }
 	
+	include "mysql_connect.php"; //Grants access to $mysqli-> variable.
+	
    function rand_sha1($length) {
         $max = ceil($length / 40);
         $random = '';
@@ -31,8 +32,7 @@
         return substr($random, 0, $length);
     }
 
-    switch($action)
-    {
+    switch($action){
         case "ECHO":
 			doEcho();
             break;
