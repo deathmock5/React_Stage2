@@ -1,23 +1,28 @@
 <?php
-    //include "uservars.php";
     include "mysql_connect.php";
-    include("ReactDB.php");
-    use ReactDB\User;
-    use ReactDB\Location;
-    use ReactDB\Data;
-    use ReactDB\Audit;
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    $file = 'temp.txt';
+    $value = "";
     $action = "";
-
-    if(isset($_GET['action']))
-    {
+	$apik = "";
+	
+    if(isset($_GET['action'])){
         $action = $_GET['action'];
     }
-
-    function rand_sha1($length) {
+	else{
+		echo "You require an action";
+		exit();
+	}
+	if(isset($_GET['value'])){
+		 $value= $_GET['value'];
+	}
+   if(isset($_GET['apik'])){
+	   //TODO: Preform sanity check
+   }
+   else{
+		echo "You require an apik";
+		exit();
+   }
+	
+   function rand_sha1($length) {
         $max = ceil($length / 40);
         $random = '';
         for ($i = 0; $i < $max; $i ++) {
@@ -28,13 +33,8 @@
 
     switch($action)
     {
-        case "CREATE":
-            if($_SESSION['user']["level"] === '5')
-            {
-                //generateing an api key.
-                $apikey = rand_sha1(32);
-                //TODO: add to the db.
-            }
+        case "ECHO":
+			doEcho();
             break;
         case "PUSH": //Push data to the server.
             if(isset($_GET['key']))
