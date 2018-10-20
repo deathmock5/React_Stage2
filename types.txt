@@ -1,8 +1,5 @@
 TYPES
 
-User
-
-
 Door
   3 Inputs
     Locked, Unlocked, Temporary Unlock
