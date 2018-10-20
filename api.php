@@ -23,24 +23,28 @@
 	
 	include "mysql_connect.php"; //Grants access to $mysqli-> variable.
 	
-   function rand_sha1($length) {
-        $max = ceil($length / 40);
-        $random = '';
-        for ($i = 0; $i < $max; $i ++) {
-            $random .= sha1(microtime(true).mt_rand(10000,90000));
-        }
+   function sha256($data,$length = 32) {
+        $random = sha256($data);
         return substr($random, 0, $length);
     }
 
-    switch($action){
+	function doEcho(){
+	}
+	function doPull(){
+		
+	}
+	function doPush(){
+	}
+   
+   switch($action){
         case "ECHO":
 			doEcho();
             break;
         case "PUSH": //Push data to the server.
             doPush();
             break;
-        case "PING":
-            doPing();
+        case "PULL": //Check the commands list for apik privided, Check the user.level >= action.level ifso echo the “ACTION” ifnot echo “ERROR” and remove entry.
+            doPull();
             break;
         default:
 			echo "Unknown action $action. "
