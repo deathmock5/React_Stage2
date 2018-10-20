@@ -1,0 +1,31 @@
+TYPES
+
+User
+
+
+Door
+  3 Inputs
+    Locked, Unlocked, Temporary Unlock
+  1 Output
+    Boolean Closed/Open
+
+Tools
+  3 Inputs
+    Boolean On/Off
+    Boolean Run/Stop
+    LONG Time Limit
+
+  2 Outputs
+    Boolean On/Off
+    Boolean Safe/Unsafe
+    LONG Time Limit
+
+Lights
+  3 Inputs
+    UINT Hue
+    UINT Saturation
+    UINT Intensity
+  3 Outputs
+    UINT Hue
+    UINT Saturation
+    UINT Intensity
