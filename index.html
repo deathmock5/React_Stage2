@@ -3,13 +3,13 @@
     <title>API Backend</title>
   </head>
   <body>
-  <form onSubmit="send_post.php" method="post">
-    <h3>Users:</h3>
-    <input type="text" name="post_category">
-    <h3>Types:</h3>
-    <input type="text" name="post_title">
-    <h3>:</h3>
-    <input type="text" name="post_tags">
+  <form action="api.hp" method="post">
+    <h3>Username:</h3>
+    <input type="text" name="post_users">
+    <h3>level:</h3>
+    <input type="text" name="post_types">
+    <h3>passash:</h3>
+    <input type="text" name="post_ext">
     <h3>Post (use html):</h3>
     <textarea rows="20" cols="50" name="post_contents"></textarea>
     <input type="submit">
